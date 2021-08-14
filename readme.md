@@ -1,1 +1,4 @@
-## This is a simple react-quill demo
+## react-quill demo
+
+Sample app to demo react-quill lib.
+
