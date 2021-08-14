@@ -1,0 +1,22 @@
+.app {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.app-header {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px;
+}
+.quill-component {
+  padding: 10px;
+  border: solid 1px burlywood;
+}
+
+.app-check {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.read-only {
+  background-color: aliceblue;
+}
