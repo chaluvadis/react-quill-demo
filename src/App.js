@@ -18,9 +18,9 @@ const App = () => {
         </label>
       </section>
       <section className="app-section">
-        <EditComponent readOnly={checked} />
-        <EditComponent readOnly={checked} />
-        <EditComponent readOnly={checked} />
+        <EditComponent readOnly={checked} htmlValue={"<h3><strong>Default initial value</strong></h3>"} />
+        <EditComponent readOnly={checked} htmlValue={"<h3><strong>Default initial value</strong></h3>"} />
+        <EditComponent readOnly={checked} htmlValue={"<h3><strong>Default initial value</strong></h3>"} />
       </section>
     </div>
   );

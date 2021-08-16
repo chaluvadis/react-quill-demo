@@ -1,6 +1,6 @@
 import ReactQuill from 'react-quill';
 import React, { useState } from "react";
-const EditComponent = ({ readOnly }) => {
+const EditComponent = ({ readOnly, htmlValue }) => {
     const modules = {
         toolbar: [
             [{ 'header': [1, 2, false] }],
@@ -18,16 +18,27 @@ const EditComponent = ({ readOnly }) => {
         'list', 'bullet', 'indent',
         'color', 'background'
     ];
-    const [value, setValue] = useState('<h3><strong>Default initial value</strong></h3>');
-    const onBlur = (previousRange, source, editor) => setValue(editor.getHTML());
+    const [value, setValue] = useState(htmlValue);
+    const [defaultModules, setDefaultMoules] = useState(readOnlyModules);
+    const [foucs, setFocus] = useState(false);
+    const [cssClass, setCssClass] = useState();
     const getClassName = () => readOnly ? 'read-only' : '';
-    const getModules = () => readOnly ? readOnlyModules : modules;
-    const onFocus = (range, source, editor) => getModules();
+    const onBlur = (previousRange, source, editor) => {
+        setValue(editor.getHTML());
+        setFocus(false);
+        setCssClass(getClassName());
+    };
+    const getModules = () => foucs ? modules : readOnlyModules;
+    const onFocus = (range, source, editor) => {
+        setDefaultMoules(getModules());
+        setFocus(true);
+        setCssClass('');
+    };
     return (
         <div className="quill-component">
             <ReactQuill theme="snow"
                 readOnly={readOnly}
-                className={getClassName()}
+                className={cssClass}
                 value={value}
                 modules={getModules()}
                 formats={formats}
